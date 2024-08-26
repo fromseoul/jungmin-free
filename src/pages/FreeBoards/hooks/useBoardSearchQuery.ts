@@ -4,14 +4,16 @@ import axios from 'axios';
 type Params = {
   page: string;
   per_page: string;
+  keyword?: string;
+  type?: string;
 };
 
-const queryKey = ['boards'];
-export const useBoardsQuery = (params: Params) => {
+const queryKey = ['board-search'];
+export const useBoardSearchQuery = (params: Params) => {
   const { data, isLoading, error } = useQuery({
     queryKey: [...queryKey, params],
     queryFn: async () => {
-      return await axios.get('https://api.github.com/repos/octocat/Spoon-Knife/issues', {
+      return await axios.get('https://api.github.com/search/topics', {
         headers: {
           'X-GitHub-Api-Version': '2022-11-28',
           Accept: 'application/vnd.github.v3+json',
@@ -19,15 +21,17 @@ export const useBoardsQuery = (params: Params) => {
         params: {
           page: params.page ? params.page : '1',
           per_page: params.per_page ? params.per_page : '10',
+          ...(params.keyword && { q: params.keyword }),
         },
       });
     },
     retry: false,
     refetchInterval: false,
     refetchOnWindowFocus: false,
+    enabled: !!params.keyword,
   });
 
-  let nextPage = null;
+  let nextPage: any = null;
   let lastPage: any = null;
 
   if (data && data.headers && data.headers.link) {
@@ -52,5 +56,5 @@ export const useBoardsQuery = (params: Params) => {
     });
   }
 
-  return { data: data ? data.data : [], lastPage, nextPage, isLoading, error };
+  return { data: data ? data.data.items : undefined, lastPage, nextPage, isLoading, error };
 };
