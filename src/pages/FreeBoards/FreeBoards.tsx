@@ -3,11 +3,11 @@ import { Avatar, Button, Image, Input, Select, Space, Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import { PlusOutlined } from '@ant-design/icons';
 import styled from '@emotion/styled';
-import { useBoardsQuery } from '@/pages/FreeBoards/hooks/useBoardsQuery';
+import { useBoardsQuery } from './hooks/useBoardsQuery';
 import dayjs from 'dayjs';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { useBoardSearchQuery } from '@/pages/FreeBoards/hooks/useBoardSearchQuery';
-import JungminModal from '@/components/JungminModal';
+import { useBoardSearchQuery } from './hooks/useBoardSearchQuery';
+import JungminModal from '../../components/JungminModal';
 
 const { Search } = Input;
 

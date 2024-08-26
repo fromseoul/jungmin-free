@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useBoardDetailQuery } from '@/pages/FreeBoards/hooks/userBoardDetailQuery';
+import { useBoardDetailQuery } from './hooks/userBoardDetailQuery';
 import { Avatar, Button, Form, Image, Input, Space } from 'antd';
 import { useForm } from 'antd/es/form/Form';
 import { Typography } from 'antd';
 import dayjs from 'dayjs';
-import JungminModal from '@/components/JungminModal';
+import JungminModal from '../../components/JungminModal';
 
 const { Title } = Typography;
 
