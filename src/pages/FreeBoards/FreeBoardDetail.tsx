@@ -39,7 +39,7 @@ function FreeBoardDetail() {
   };
 
   const onUpdate = () => {
-    navigate(`${location}/edit`);
+    navigate(`${location.pathname}/edit`);
   };
 
   const onDeleteOk = async () => {
