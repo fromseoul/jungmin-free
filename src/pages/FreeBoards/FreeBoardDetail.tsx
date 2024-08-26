@@ -73,7 +73,7 @@ function FreeBoardDetail() {
           </Button>
           <Button onClick={onDelete}>삭제</Button>
         </Space>
-        <Button onClick={onListReturn}>목록</Button>
+        {mode !== 'edit' && <Button onClick={onListReturn}>목록</Button>}
       </Space>
       {deleteModal && (
         <JungminModal onCancel={() => setDeleteModal(false)} onOk={onDeleteOk} cancelText="취소" open={deleteModal}>
