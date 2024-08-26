@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useBoardDetailQuery } from './hooks/userBoardDetailQuery';
 import { Avatar, Button, Form, Image, Input, Space } from 'antd';
 import { useForm } from 'antd/es/form/Form';
@@ -13,6 +13,7 @@ function FreeBoardDetail() {
   const { id, mode } = useParams();
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [form] = useForm();
 
@@ -38,7 +39,7 @@ function FreeBoardDetail() {
   };
 
   const onUpdate = () => {
-    navigate(`/${id}/edit`);
+    navigate(`${location}/edit`);
   };
 
   const onDeleteOk = async () => {
